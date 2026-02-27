@@ -1,97 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Action Planner</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #0f0f0f;
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            background-color: #1a1a2e;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 600px;
-            margin: auto;
-        }
-        .task {
-            margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #bb86fc;
-            background-color: #1a1a2e;
-            border-radius: 5px;
-        }
-        .accent {
-            color: #bb86fc;
-        }
-        button {
-            background-color: #bb86fc;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            cursor: pointer;
-        }
-    </style>
+    <title>Planner</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Action Planner</h1>
-        <form id="task-form">
-            <input type="text" id="task-input" placeholder="Enter your task" required />
-            <select id="category-input">
-                <option value="personal">Personal</option>
-                <option value="work">Work</option>
-                <option value="study">Study</option>
-            </select>
-            <select id="priority-input">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-            </select>
-            <button type="submit">Add Task</button>
-        </form>
-        <div id="task-list"></div>
-    </div>
-    <script>
-        const taskForm = document.getElementById('task-form');
-        const taskInput = document.getElementById('task-input');
-        const categoryInput = document.getElementById('category-input');
-        const priorityInput = document.getElementById('priority-input');
-        const taskList = document.getElementById('task-list');
-
-        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-
-        function renderTasks() {
-            taskList.innerHTML = '';
-            tasks.forEach((task, index) => {
-                const taskDiv = document.createElement('div');
-                taskDiv.classList.add('task');
-                taskDiv.innerHTML = `<strong class='accent'>${task.category}</strong>: ${task.name} <span>(Priority: ${task.priority})</span>`;
-                taskList.appendChild(taskDiv);
-            });
-        }
-
-        taskForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const newTask = {
-                name: taskInput.value,
-                category: categoryInput.value,
-                priority: priorityInput.value
-            };
-            tasks.push(newTask);
-            localStorage.setItem('tasks', JSON.stringify(tasks));
-            taskInput.value = '';
-            renderTasks();
-        });
-
-        renderTasks();
-    </script>
+    <h1>Categories</h1>
+    <ul>
+        <li>Marketing</li>
+        <li>Sales</li>
+        <li>Customer Service</li>
+        <li>Testing</li>
+        <li>Other</li>
+    </ul>
 </body>
 </html>
